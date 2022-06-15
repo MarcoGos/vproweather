@@ -24,6 +24,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <memory.h>
+#include <math.h>
 #include "dhandler.h"
 #include "main.h"
 #include "names.h"
@@ -272,6 +273,8 @@ static HLDATA hld;          /* the one and only highs/lows packet */
 static ARCHINFO arcInfo;    /* archive download info packet */
 static ARCHDOWNLOAD arcPacket;
 
+static bool useMetric;
+
 /* local functions */
 static char* TimeConvert(uint16_t wTime);
 static void PrintTimeSet(uint8_t *pData, int nOffset, uint8_t yNext, int nSetSize);
@@ -506,6 +509,15 @@ char* getWindRose(uint8_t bearing) {
         return "NNW";
 }
 
+float ConvertFtoC(float Temperature)
+{
+   /* float value; */
+    float value;
+
+    value = (Temperature - 32.0) * (5.0/9.0);
+    value = (roundf(value * 10.0)) / 10.0;
+}
+
 /**
  * Dumps the real time weather data to stdout.
  *
@@ -539,7 +551,11 @@ void PrintRTData(bool includeLoop2Data)
     printf("%s = %2.2f\n", _BARO_CURR, rcd.wBarometer / 1000.0 );
     printf("%s = %.1f\n", _INSIDE_TEMP, ((int16_t)rcd.wInsideTemp) / 10.0 );
     printf("%s = %d\n", _INSIDE_HUM, rcd.yInsideHum );
-    printf("%s = %.1f\n", _OUTSIDE_TEMP, ((int16_t)rcd.wOutsideTemp) / 10.0 );
+    if (useMetric) {
+      printf("%s = %.1f\n", _OUTSIDE_TEMP, ConvertFtoC(((int16_t)rcd.wOutsideTemp) / 10.0));
+    } else {
+      printf("%s = %.1f\n", _OUTSIDE_TEMP, ((int16_t)rcd.wOutsideTemp) / 10.0 );
+    }
     printf("%s = %d\n", _WIND_SPEED, rcd.yWindSpeed );
     if (includeLoop2Data) {
       printf("%s = %.1f\n", _WIND_AVG_SPEED, (double)rcd2.avgWindSpd10m / 10.0 );
