@@ -24,6 +24,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <memory.h>
+#include <math.h>
 #include "dhandler.h"
 #include "main.h"
 #include "names.h"
@@ -272,6 +273,8 @@ static HLDATA hld;          /* the one and only highs/lows packet */
 static ARCHINFO arcInfo;    /* archive download info packet */
 static ARCHDOWNLOAD arcPacket;
 
+static bool useMetric;
+
 /* local functions */
 static char* TimeConvert(uint16_t wTime);
 static void PrintTimeSet(uint8_t *pData, int nOffset, uint8_t yNext, int nSetSize);
@@ -504,6 +507,15 @@ char* getWindRose(uint8_t bearing) {
         return "NW";
     else    /*  >326 <347 */
         return "NNW";
+}
+
+float ConvertFtoC(float Temperature)
+{
+   /* float value; */
+    float value;
+
+    value = (Temperature - 32.0) * (5.0/9.0);
+    value = (roundf(value * 10.0)) / 10.0;
 }
 
 /**
