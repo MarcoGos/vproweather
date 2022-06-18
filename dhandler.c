@@ -540,6 +540,19 @@ void PrintRTData(bool includeLoop2Data)
     printf("%s = %.1f\n", _INSIDE_TEMP, ((int16_t)rcd.wInsideTemp) / 10.0 );
     printf("%s = %d\n", _INSIDE_HUM, rcd.yInsideHum );
     printf("%s = %.1f\n", _OUTSIDE_TEMP, ((int16_t)rcd.wOutsideTemp) / 10.0 );
+    for (i = 0; i < 7; i++) {
+        if (rcd.yXtraTemps[i] != 255) printf("%s%i = %i\n", _EXTRA_TEMP, i+1, rcd.yXtraTemps[i]-90 );
+    }
+    for (i = 0; i < 4; i++) {
+        if (rcd.ySoilTemps[i] != 255) printf("%s%i = %i\n", _SOIL_TEMP, i+1, rcd.ySoilTemps[i]-90 );
+    }
+    for (i = 0; i < 4; i++) {
+        if (rcd.yLeafTemps[i] != 255) printf("%s%i = %i\n", _LEAF_TEMP, i+1, rcd.yLeafTemps[i]-90 );
+    }
+    printf("%s = %d\n", _OUTSIDE_HUM, rcd.yOutsideHum );
+    for (i = 0; i < 7; i++) {
+        if (rcd.yXtraHums[i] != 255) printf("%s%i = %d\n", _EXTRA_HUM, i+1, rcd.yXtraHums[i] );
+    }
     printf("%s = %d\n", _WIND_SPEED, rcd.yWindSpeed );
     if (includeLoop2Data) {
       printf("%s = %.1f\n", _WIND_AVG_SPEED, (double)rcd2.avgWindSpd10m / 10.0 );
