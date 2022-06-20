@@ -394,7 +394,7 @@ void PrintTime(char *szData)
     stm = *localtime(&tt);              /* correct bogus values */
 
     /* change the following line if you don't like the time format */
-    strftime(szBuf, sizeof(szBuf), "%A, %B %d, %Y  %I:%M %p\n"  , &stm);
+    strftime(szBuf, sizeof(szBuf), "%Y/%m/%dT%H:%M:%S\n"  , &stm);
 
     printf("DavisTime = %s", szBuf);
 }
