@@ -600,9 +600,9 @@ void PrintRTData(bool includeLoop2Data)
 
     if (includeLoop2Data) printf("%s = %.2f\n", _RAIN_LAST_15M, rcd2.last15mRain / 100.0);
     if (includeLoop2Data) printf("%s = %.2f\n", _RAIN_LAST_HOUR, rcd2.lastHourRain / 100.0);
-    printf("%s = %d\n", _DAY_RAIN, rcd.wRainDay);
-    printf("%s = %d\n", _MONTH_RAIN, rcd.wRainMonth);
-    printf("%s = %d\n", _YEAR_RAIN, rcd.wRainYear);
+    printf("%s = %d\n", _DAY_RAIN, rcd.wRainDay / 100.0);
+    printf("%s = %d\n", _MONTH_RAIN, rcd.wRainMonth / 100.0);
+    printf("%s = %d\n", _YEAR_RAIN, rcd.wRainYear / 100.0);
     printf("%s = %0.3f\n", _DAY_ET, rcd.wETDay / 1000.0);
     printf("%s = %0.2f\n", _MONTH_ET, rcd.wETMonth / 100.0);
     printf("%st = %d\n", _XMIT_BATT, rcd.yXmitBatt);
