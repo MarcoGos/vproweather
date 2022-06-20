@@ -542,13 +542,13 @@ void PrintRTData(bool includeLoop2Data)
     printf("%s = %d\n", _INSIDE_HUM, rcd.yInsideHum );
     printf("%s = %.1f\n", _OUTSIDE_TEMP, ((int16_t)rcd.wOutsideTemp) / 10.0 );
     for (i = 0; i < 7; i++) {
-        if (rcd.yXtraTemps[i] != 255) printf("%s%i = %i\n", _EXTRA_TEMP, i+1, rcd.yXtraTemps[i]-90 );
+        if (rcd.yXtraTemps[i] != -1) printf("%s%i = %i\n", _EXTRA_TEMP, i+1, rcd.yXtraTemps[i]-90 );
     }
     for (i = 0; i < 4; i++) {
-        if (rcd.ySoilTemps[i] != 255) printf("%s%i = %i\n", _SOIL_TEMP, i+1, rcd.ySoilTemps[i]-90 );
+        if (rcd.ySoilTemps[i] != -1) printf("%s%i = %i\n", _SOIL_TEMP, i+1, rcd.ySoilTemps[i]-90 );
     }
     for (i = 0; i < 4; i++) {
-        if (rcd.yLeafTemps[i] != 255) printf("%s%i = %i\n", _LEAF_TEMP, i+1, rcd.yLeafTemps[i]-90 );
+        if (rcd.yLeafTemps[i] != -1) printf("%s%i = %i\n", _LEAF_TEMP, i+1, rcd.yLeafTemps[i]-90 );
     }
     printf("%s = %d\n", _OUTSIDE_HUM, rcd.yOutsideHum );
     for (i = 0; i < 7; i++) {
@@ -594,6 +594,7 @@ void PrintRTData(bool includeLoop2Data)
     printf("%s = %0.2f\n", _YEAR_RAIN, rcd.wRainYear / 100.0);
     printf("%s = %0.3f\n", _DAY_ET, rcd.wETDay / 1000.0);
     printf("%s = %0.2f\n", _MONTH_ET, rcd.wETMonth / 100.0);
+    printf("%s = %0.2f\n", _YEAR_ET, rcd.wETYear / 100.0);
     printf("%st = %d\n", _XMIT_BATT, rcd.yXmitBatt);
     printf("%s = %.1f\n", _BATT_VOLTAGE, ((rcd.wBattLevel * 300)/512)/100.0);
     printf("%s = %d\n", _FORE_ICON, rcd.yForeIcon);

@@ -63,6 +63,7 @@
 #define _YEAR_RAIN      "rtYearRain"
 #define _DAY_ET         "rtDayET"
 #define _MONTH_ET       "rtMonthET"
+#define _YEAR_ET        "rtYearET"
 #define _XMIT_BATT      "rtXmitBatt"
 #define _BATT_VOLTAGE   "rtBattVoltage"
 #define _FORE_ICON      "rtForeIcon"
