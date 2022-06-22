@@ -539,8 +539,10 @@ void PrintRTData(bool includeLoop2Data)
         case -20: 
         case -236: printf("baro_fs\n"); break;
         case 0:    printf("baro_s\n"); break;
-        case 20:   printf("baro_rs\n"); break;
-        case 60:   printf("baro_rr\n"); break;
+        case 20:
+        case 236:  printf("baro_rs\n"); break;
+        case 60:
+        case 196:  printf("baro_rr\n"); break;
         default:   printf("baro_none\n");
     }
     printf("%s = %2.2f\n", _BARO_CURR, rcd.wBarometer / 1000.0 );
