@@ -521,21 +521,25 @@ void PrintRTData(bool includeLoop2Data)
     i = rcd.cP;
     printf("%s = ", _BARO_TREND);
     switch(i) {
-        case -60: printf("Falling Rapidly\n"); break;
-        case -20: printf("Falling Slowly\n"); break;
-        case 0:   printf("Steady\n"); break;
-        case 20:  printf("Rising Slowly\n"); break;
-        case 60:  printf("Rising Rapidly\n"); break;
-        default:  printf("n/a-%d\n", rcd.cP);
+        case -60:
+        case -196: printf("Falling Rapidly\n"); break;
+        case -20:  
+        case -236: printf("Falling Slowly\n"); break;
+        case 0:    printf("Steady\n"); break;
+        case 20:   printf("Rising Slowly\n"); break;
+        case 60:   printf("Rising Rapidly\n"); break;
+        default:   printf("n/a-%d\n", rcd.cP);
     }
     printf("%s = ", _BARO_TREND_IMG);
     switch(i) {
-        case -60: printf("baro_fr\n"); break;
-        case -20: printf("baro_fs\n"); break;
-        case 0:   printf("baro_s\n"); break;
-        case 20:  printf("baro_rs\n"); break;
-        case 60:  printf("baro_rr\n"); break;
-        default:  printf("baro_none\n");
+        case -60: 
+        case -196: printf("baro_fr\n"); break;
+        case -20: 
+        case -236: printf("baro_fs\n"); break;
+        case 0:    printf("baro_s\n"); break;
+        case 20:   printf("baro_rs\n"); break;
+        case 60:   printf("baro_rr\n"); break;
+        default:   printf("baro_none\n");
     }
     printf("%s = %2.2f\n", _BARO_CURR, rcd.wBarometer / 1000.0 );
     printf("%s = %.1f\n", _INSIDE_TEMP, ((int16_t)rcd.wInsideTemp) / 10.0 );
