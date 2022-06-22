@@ -526,8 +526,10 @@ void PrintRTData(bool includeLoop2Data)
         case -20:  
         case -236: printf("Falling Slowly\n"); break;
         case 0:    printf("Steady\n"); break;
-        case 20:   printf("Rising Slowly\n"); break;
-        case 60:   printf("Rising Rapidly\n"); break;
+        case 20:   
+        case 236:  printf("Rising Slowly\n"); break;
+        case 60:   
+        case 196:  printf("Rising Rapidly\n"); break;
         default:   printf("n/a-%d\n", rcd.cP);
     }
     printf("%s = ", _BARO_TREND_IMG);
