@@ -575,7 +575,7 @@ void PrintRTData(bool includeLoop2Data)
     if (includeLoop2Data) printf("%s = %d\n", _WIND_10M_GUST_DIR, rcd2.windGust10mDir );
     if (includeLoop2Data) printf("%s = %s\n", _WIND_10M_GUST_DIR_ROSE, getWindRose(rcd2.windGust10mDir) );
     printf("%s = %d\n", _OUTSIDE_HUM, rcd.yOutsideHum );
-    printf("%s = %d\n", _RAIN_RATE, rcd.wRainRate );
+    printf("%s = %d\n", _RAIN_RATE, rcd.wRainRate / 100.0 );
     printf("%s = %s\n", _IS_RAINING, rcd.wRainRate ? "yes" : "no");
     printf("%s = ", _UV_LEVEL);
     if(rcd.yUVLevel == 0xff)
