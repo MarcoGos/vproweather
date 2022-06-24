@@ -472,7 +472,7 @@ void GetHLData(char *szData)
  *
  * @returns Rose string
  */
-char* getWindRose(uint8_t bearing) {
+char* getWindRose(uint16_t bearing) {
     if(bearing >= 347 && bearing < 12)        /* compass rose version */
         return "N";
     else if(bearing >= 12 && bearing < 34)
